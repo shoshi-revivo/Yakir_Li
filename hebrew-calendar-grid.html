@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לוח שנה - יקיר לי ☕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF6E3;
+            --coffee-dark: #3E2723;
+            --coffee-medium: #5D4037;
+            --coffee-light: #8D6E63;
+            --caramel: #D4A574;
+            --gold: #C9A227;
+            --warm-white: #FFFEF7;
+            --soft-shadow: rgba(62, 39, 35, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', 'Rubik', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #F5E6D3 50%, #EDE0D4 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: linear-gradient(145deg, var(--warm-white), var(--cream));
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--soft-shadow);
+            border: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .coffee-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 900;
+            color: var(--coffee-dark);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--coffee-medium);
+            font-weight: 500;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            color: var(--coffee-medium);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.meeting { background: var(--caramel); }
+        .legend-dot.conference { background: var(--coffee-light); }
+        .legend-dot.final { background: var(--gold); }
+
+        .months-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .month-calendar {
+            background: var(--warm-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px var(--soft-shadow);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .month-title {
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-medium) 100%);
+            color: var(--cream);
+            padding: 18px 25px;
+            font-size: 1.8em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .month-title::before,
+        .month-title::after {
+            content: '☕';
+            font-size: 0.7em;
+            opacity: 0.6;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            padding: 15px;
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        .day-header {
+            background: var(--coffee-light);
+            color: white;
+            padding: 12px 5px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.95em;
+            border-radius: 8px;
+        }
+
+        .day-header.shabbat {
+            background: var(--coffee-dark);
+        }
+
+        .day-cell {
+            background: white;
+            min-height: 90px;
+            padding: 8px;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .day-cell:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .day-cell.empty {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .day-cell.shabbat {
+            background: #FFF8F0;
+        }
+
+        .day-cell.has-event {
+            border: 2px solid var(--caramel);
+        }
+
+        .day-cell.has-conference {
+            border: 2px solid var(--coffee-light);
+        }
+
+        .day-cell.has-final {
+            border: 2px solid var(--gold);
+            background: linear-gradient(135deg, #FFFDE7 0%, #FFF8E1 100%);
+        }
+
+        .day-number {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--coffee-dark);
+            margin-bottom: 5px;
+        }
+
+        .day-cell.shabbat .day-number {
+            color: var(--coffee-medium);
+        }
+
+        .event-badge {
+            font-size: 0.7em;
+            padding: 4px 8px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            margin-top: 5px;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .event-badge.meeting {
+            background: linear-gradient(135deg, var(--caramel), #C4956A);
+        }
+
+        .event-badge.conference {
+            background: linear-gradient(135deg, var(--coffee-light), var(--coffee-medium));
+        }
+
+        .event-badge.final {
+            background: linear-gradient(135deg, var(--gold), #DAA520);
+        }
+
+        .event-icon {
+            font-size: 1.2em;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .parsha-name {
+            font-size: 0.7em;
+            color: var(--coffee-light);
+            margin-top: 3px;
+        }
+
+        .event-details {
+            font-size: 0.65em;
+            color: var(--coffee-medium);
+            margin-top: 2px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            color: var(--coffee-medium);
+            font-size: 1.1em;
+        }
+
+        footer .hearts {
+            font-size: 1.5em;
+            margin-top: 10px;
+            letter-spacing: 8px;
+        }
+
+        @media (max-width: 800px) {
+            .day-cell { min-height: 70px; padding: 5px; }
+            .day-number { font-size: 1em; }
+            .event-badge { font-size: 0.6em; padding: 3px 6px; }
+            .day-header { padding: 8px 3px; font-size: 0.8em; }
+            h1 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="coffee-icon">☕</div>
+            <h1>מפגש יקיר לי</h1>
+            <p class="subtitle">לוח שנה תשפ״ו</p>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot meeting"></div>
+                    <span>מפגש יקיר לי</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot conference"></div>
+                    <span>ועידה</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot final"></div>
+                    <span>מפגש סיום</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="months-container">
+            <!-- חודש טבת -->
+            <div class="month-calendar">
+                <div class="month-title">טבת תשפ״ו</div>
+                <div class="calendar-grid">
+                    <!-- Headers -->
+                    <div class="day-header shabbat">שבת</div>
+                    <div class="day-header">שישי</div>
+                    <div class="day-header">חמישי</div>
+                    <div class="day-header">רביעי</div>
+                    <div class="day-header">שלישי</div>
+                    <div class="day-header">שני</div>
+                    <div class="day-header">ראשון</div>
+                    
+                    <!-- Week 1 - Tevet starts on Sunday -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">ו׳</div>
+                        <div class="parsha-name">ויגש</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">ה׳</div></div>
+                    <div class="day-cell"><div class="day-number">ד׳</div></div>
+                    <div class="day-cell has-conference">
+                        <div class="day-number">ג׳</div>
+                        <span class="event-badge conference">ועידה ב״ב</span>
+                        <span class="event-icon">🏛️</span>
+                    </div>
+                    <div class="day-cell"><div class="day-number">ב׳</div></div>
+                    <div class="day-cell"><div class="day-number">א׳</div></div>
+                    <div class="day-cell empty"></div>
+
+                    <!-- Week 2 -->
+                    <div class="day-cell shabbat has-event">
+                        <div class="day-number">י״ג</div>
+                        <div class="parsha-name">ויחי</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">י״ב</div></div>
+                    <div class="day-cell"><div class="day-number">י״א</div></div>
+                    <div class="day-cell"><div class="day-number">י׳</div></div>
+                    <div class="day-cell"><div class="day-number">ט׳</div></div>
+                    <div class="day-cell"><div class="day-number">ח׳</div></div>
+                    <div class="day-cell has-event">
+                        <div class="day-number">ז׳</div>
+                        <span class="event-badge meeting">מפגש 4</span>
+                        <span class="event-icon">☕</span>
+                        <div class="parsha-name">ויגש</div>
+                    </div>
+
+                    <!-- Week 3 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">כ׳</div>
+                        <div class="parsha-name">שמות</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">י״ט</div></div>
+                    <div class="day-cell"><div class="day-number">י״ח</div></div>
+                    <div class="day-cell"><div class="day-number">י״ז</div></div>
+                    <div class="day-cell"><div class="day-number">ט״ז</div></div>
+                    <div class="day-cell"><div class="day-number">ט״ו</div></div>
+                    <div class="day-cell"><div class="day-number">י״ד</div></div>
+
+                    <!-- Week 4 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">כ״ז</div>
+                        <div class="parsha-name">וארא</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ה</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ג</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ב</div></div>
+                    <div class="day-cell has-event">
+                        <div class="day-number">כ״א</div>
+                        <span class="event-badge meeting">מפגש 5</span>
+                        <span class="event-icon">☕</span>
+                        <div class="parsha-name">שמות</div>
+                    </div>
+
+                    <!-- Week 5 -->
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell"><div class="day-number">כ״ט</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ח</div></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                </div>
+            </div>
+
+            <!-- חודש שבט -->
+            <div class="month-calendar">
+                <div class="month-title">שבט תשפ״ו</div>
+                <div class="calendar-grid">
+                    <!-- Headers -->
+                    <div class="day-header shabbat">שבת</div>
+                    <div class="day-header">שישי</div>
+                    <div class="day-header">חמישי</div>
+                    <div class="day-header">רביעי</div>
+                    <div class="day-header">שלישי</div>
+                    <div class="day-header">שני</div>
+                    <div class="day-header">ראשון</div>
+                    
+                    <!-- Week 1 - Shevat -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">ד׳</div>
+                        <div class="parsha-name">בא</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">ג׳</div></div>
+                    <div class="day-cell has-conference">
+                        <div class="day-number">ב׳</div>
+                        <span class="event-badge conference">ועידה ב״ב</span>
+                        <span class="event-icon">🏛️</span>
+                    </div>
+                    <div class="day-cell"><div class="day-number">א׳</div></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+
+                    <!-- Week 2 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">י״א</div>
+                        <div class="parsha-name">בשלח</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">י׳</div></div>
+                    <div class="day-cell"><div class="day-number">ט׳</div></div>
+                    <div class="day-cell"><div class="day-number">ח׳</div></div>
+                    <div class="day-cell"><div class="day-number">ז׳</div></div>
+                    <div class="day-cell has-event">
+                        <div class="day-number">ו׳</div>
+                        <span class="event-badge meeting">מפגש 6</span>
+                        <span class="event-icon">☕</span>
+                        <div class="parsha-name">בא</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">ה׳</div></div>
+
+                    <!-- Week 3 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">י״ח</div>
+                        <div class="parsha-name">יתרו</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">י״ז</div></div>
+                    <div class="day-cell"><div class="day-number">ט״ז</div></div>
+                    <div class="day-cell"><div class="day-number">ט״ו</div></div>
+                    <div class="day-cell"><div class="day-number">י״ד</div></div>
+                    <div class="day-cell"><div class="day-number">י״ג</div></div>
+                    <div class="day-cell"><div class="day-number">י״ב</div></div>
+
+                    <!-- Week 4 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">כ״ה</div>
+                        <div class="parsha-name">משפטים</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ג</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ב</div></div>
+                    <div class="day-cell"><div class="day-number">כ״א</div></div>
+                    <div class="day-cell has-event">
+                        <div class="day-number">כ׳</div>
+                        <span class="event-badge meeting">מפגש 7</span>
+                        <span class="event-icon">☕</span>
+                        <div class="parsha-name">יתרו</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">י״ט</div></div>
+
+                    <!-- Week 5 -->
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell"><div class="day-number">ל׳</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ט</div></div>
+                    <div class="day-cell has-conference">
+                        <div class="day-number">כ״ח</div>
+                        <span class="event-badge conference">ועידה י-ם</span>
+                        <span class="event-icon">🏛️</span>
+                    </div>
+                    <div class="day-cell"><div class="day-number">כ״ז</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
+                    <div class="day-cell empty"></div>
+                </div>
+            </div>
+
+            <!-- חודש אדר -->
+            <div class="month-calendar">
+                <div class="month-title">אדר תשפ״ו</div>
+                <div class="calendar-grid">
+                    <!-- Headers -->
+                    <div class="day-header shabbat">שבת</div>
+                    <div class="day-header">שישי</div>
+                    <div class="day-header">חמישי</div>
+                    <div class="day-header">רביעי</div>
+                    <div class="day-header">שלישי</div>
+                    <div class="day-header">שני</div>
+                    <div class="day-header">ראשון</div>
+                    
+                    <!-- Week 1 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">ב׳</div>
+                        <div class="parsha-name">תרומה</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">א׳</div></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+
+                    <!-- Week 2 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">ט׳</div>
+                        <div class="parsha-name">תצוה</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">ח׳</div></div>
+                    <div class="day-cell"><div class="day-number">ז׳</div></div>
+                    <div class="day-cell"><div class="day-number">ו׳</div></div>
+                    <div class="day-cell"><div class="day-number">ה׳</div></div>
+                    <div class="day-cell"><div class="day-number">ד׳</div></div>
+                    <div class="day-cell"><div class="day-number">ג׳</div></div>
+
+                    <!-- Week 3 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">ט״ז</div>
+                        <div class="parsha-name">כי תשא</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">ט״ו</div></div>
+                    <div class="day-cell"><div class="day-number">י״ד</div></div>
+                    <div class="day-cell"><div class="day-number">י״ג</div></div>
+                    <div class="day-cell"><div class="day-number">י״ב</div></div>
+                    <div class="day-cell has-event">
+                        <div class="day-number">י״א</div>
+                        <span class="event-badge meeting">מפגש 8</span>
+                        <span class="event-icon">☕</span>
+                        <div class="parsha-name">תצוה</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">י׳</div></div>
+
+                    <!-- Week 4 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">כ״ג</div>
+                        <div class="parsha-name">ויק״פ</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">כ״ב</div></div>
+                    <div class="day-cell"><div class="day-number">כ״א</div></div>
+                    <div class="day-cell"><div class="day-number">כ׳</div></div>
+                    <div class="day-cell"><div class="day-number">י״ט</div></div>
+                    <div class="day-cell"><div class="day-number">י״ח</div></div>
+                    <div class="day-cell"><div class="day-number">י״ז</div></div>
+
+                    <!-- Week 5 -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">ל׳</div>
+                        <div class="parsha-name">ויקרא</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">כ״ט</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ח</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ז</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
+                    <div class="day-cell has-final">
+                        <div class="day-number">כ״ה</div>
+                        <span class="event-badge final">סיום! 🎉</span>
+                        <span class="event-icon">🎊</span>
+                        <div class="parsha-name">ויק״פ</div>
+                    </div>
+                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>מחכה לראותכן! ☕</p>
+            <div class="hearts">💛 🤎 💛</div>
+        </footer>
+    </div>
+</body>
+</html>
+
