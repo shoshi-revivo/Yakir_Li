@@ -149,7 +149,7 @@
 
         .day-cell {
             background: white;
-            min-height: 90px;
+            min-height: 100px;
             padding: 8px;
             border-radius: 10px;
             position: relative;
@@ -189,7 +189,15 @@
             font-size: 1.3em;
             font-weight: 700;
             color: var(--coffee-dark);
-            margin-bottom: 5px;
+            margin-bottom: 2px;
+        }
+
+        .gregorian-date {
+            font-size: 0.65em;
+            color: #999;
+            font-weight: 400;
+            direction: ltr;
+            display: inline-block;
         }
 
         .day-cell.shabbat .day-number {
@@ -197,12 +205,12 @@
         }
 
         .event-badge {
-            font-size: 0.7em;
-            padding: 4px 8px;
-            border-radius: 12px;
+            font-size: 0.65em;
+            padding: 3px 6px;
+            border-radius: 10px;
             color: white;
             font-weight: 600;
-            margin-top: 5px;
+            margin-top: 4px;
             display: inline-block;
             line-height: 1.2;
         }
@@ -220,15 +228,15 @@
         }
 
         .event-icon {
-            font-size: 1.2em;
+            font-size: 1em;
             display: block;
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
         .parsha-name {
-            font-size: 0.7em;
+            font-size: 0.6em;
             color: var(--coffee-light);
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
         footer {
@@ -246,9 +254,10 @@
         }
 
         @media (max-width: 800px) {
-            .day-cell { min-height: 70px; padding: 5px; }
+            .day-cell { min-height: 80px; padding: 5px; }
             .day-number { font-size: 1em; }
-            .event-badge { font-size: 0.6em; padding: 3px 6px; }
+            .gregorian-date { font-size: 0.55em; }
+            .event-badge { font-size: 0.55em; padding: 2px 5px; }
             .day-header { padding: 8px 3px; font-size: 0.8em; }
             h1 { font-size: 1.8em; }
         }
@@ -277,7 +286,7 @@
         </header>
 
         <div class="months-container">
-            <!-- חודש טבת - א׳ טבת = יום ראשון -->
+            <!-- חודש טבת - א׳ טבת = 21.12.2025 יום ראשון -->
             <div class="month-calendar">
                 <div class="month-title">טבת תשפ״ו</div>
                 <div class="calendar-grid">
@@ -292,59 +301,59 @@
                     
                     <!-- שבוע 1: א׳-ז׳ טבת -->
                     <div class="day-cell shabbat has-event">
-                        <div class="day-number">ז׳</div>
+                        <div class="day-number">ז׳ <span class="gregorian-date">27.12</span></div>
                         <div class="parsha-name">פר׳ ויגש</div>
                         <span class="event-badge meeting">מפגש 4</span>
                         <span class="event-icon">☕</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">ו׳</div></div>
-                    <div class="day-cell"><div class="day-number">ה׳</div></div>
-                    <div class="day-cell"><div class="day-number">ד׳</div></div>
+                    <div class="day-cell"><div class="day-number">ו׳ <span class="gregorian-date">26.12</span></div></div>
+                    <div class="day-cell"><div class="day-number">ה׳ <span class="gregorian-date">25.12</span></div></div>
+                    <div class="day-cell"><div class="day-number">ד׳ <span class="gregorian-date">24.12</span></div></div>
                     <div class="day-cell has-conference">
-                        <div class="day-number">ג׳</div>
+                        <div class="day-number">ג׳ <span class="gregorian-date">23.12</span></div>
                         <span class="event-badge conference">ועידה ב״ב</span>
                         <span class="event-icon">🏛️</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">ב׳</div></div>
-                    <div class="day-cell"><div class="day-number">א׳</div></div>
+                    <div class="day-cell"><div class="day-number">ב׳ <span class="gregorian-date">22.12</span></div></div>
+                    <div class="day-cell"><div class="day-number">א׳ <span class="gregorian-date">21.12</span></div></div>
 
                     <!-- שבוע 2: ח׳-י״ד טבת -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">י״ד</div>
+                        <div class="day-number">י״ד <span class="gregorian-date">3.1</span></div>
                         <div class="parsha-name">פר׳ ויחי</div>
                     </div>
-                    <div class="day-cell"><div class="day-number">י״ג</div></div>
-                    <div class="day-cell"><div class="day-number">י״ב</div></div>
-                    <div class="day-cell"><div class="day-number">י״א</div></div>
-                    <div class="day-cell"><div class="day-number">י׳</div></div>
-                    <div class="day-cell"><div class="day-number">ט׳</div></div>
-                    <div class="day-cell"><div class="day-number">ח׳</div></div>
+                    <div class="day-cell"><div class="day-number">י״ג <span class="gregorian-date">2.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ב <span class="gregorian-date">1.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״א <span class="gregorian-date">31.12</span></div></div>
+                    <div class="day-cell"><div class="day-number">י׳ <span class="gregorian-date">30.12</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט׳ <span class="gregorian-date">29.12</span></div></div>
+                    <div class="day-cell"><div class="day-number">ח׳ <span class="gregorian-date">28.12</span></div></div>
 
                     <!-- שבוע 3: ט״ו-כ״א טבת -->
                     <div class="day-cell shabbat has-event">
-                        <div class="day-number">כ״א</div>
+                        <div class="day-number">כ״א <span class="gregorian-date">10.1</span></div>
                         <div class="parsha-name">פר׳ שמות</div>
                         <span class="event-badge meeting">מפגש 5</span>
                         <span class="event-icon">☕</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">כ׳</div></div>
-                    <div class="day-cell"><div class="day-number">י״ט</div></div>
-                    <div class="day-cell"><div class="day-number">י״ח</div></div>
-                    <div class="day-cell"><div class="day-number">י״ז</div></div>
-                    <div class="day-cell"><div class="day-number">ט״ז</div></div>
-                    <div class="day-cell"><div class="day-number">ט״ו</div></div>
+                    <div class="day-cell"><div class="day-number">כ׳ <span class="gregorian-date">9.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ט <span class="gregorian-date">8.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ח <span class="gregorian-date">7.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ז <span class="gregorian-date">6.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט״ז <span class="gregorian-date">5.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט״ו <span class="gregorian-date">4.1</span></div></div>
 
                     <!-- שבוע 4: כ״ב-כ״ח טבת -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">כ״ח</div>
+                        <div class="day-number">כ״ח <span class="gregorian-date">17.1</span></div>
                         <div class="parsha-name">פר׳ וארא</div>
                     </div>
-                    <div class="day-cell"><div class="day-number">כ״ז</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ה</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ג</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ב</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ז <span class="gregorian-date">16.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ו <span class="gregorian-date">15.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ה <span class="gregorian-date">14.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ד <span class="gregorian-date">13.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ג <span class="gregorian-date">12.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ב <span class="gregorian-date">11.1</span></div></div>
 
                     <!-- שבוע 5: כ״ט טבת -->
                     <div class="day-cell empty"></div>
@@ -353,11 +362,11 @@
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
-                    <div class="day-cell"><div class="day-number">כ״ט</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ט <span class="gregorian-date">18.1</span></div></div>
                 </div>
             </div>
 
-            <!-- חודש שבט - א׳ שבט = יום שני -->
+            <!-- חודש שבט - א׳ שבט = 19.1.2026 יום שני -->
             <div class="month-calendar">
                 <div class="month-title">שבט תשפ״ו</div>
                 <div class="calendar-grid">
@@ -372,76 +381,76 @@
                     
                     <!-- שבוע 1: א׳-ו׳ שבט -->
                     <div class="day-cell shabbat has-event">
-                        <div class="day-number">ו׳</div>
+                        <div class="day-number">ו׳ <span class="gregorian-date">24.1</span></div>
                         <div class="parsha-name">פר׳ בא</div>
                         <span class="event-badge meeting">מפגש 6</span>
                         <span class="event-icon">☕</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">ה׳</div></div>
-                    <div class="day-cell"><div class="day-number">ד׳</div></div>
-                    <div class="day-cell"><div class="day-number">ג׳</div></div>
+                    <div class="day-cell"><div class="day-number">ה׳ <span class="gregorian-date">23.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">ד׳ <span class="gregorian-date">22.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">ג׳ <span class="gregorian-date">21.1</span></div></div>
                     <div class="day-cell has-conference">
-                        <div class="day-number">ב׳</div>
+                        <div class="day-number">ב׳ <span class="gregorian-date">20.1</span></div>
                         <span class="event-badge conference">ועידה ב״ב</span>
                         <span class="event-icon">🏛️</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">א׳</div></div>
+                    <div class="day-cell"><div class="day-number">א׳ <span class="gregorian-date">19.1</span></div></div>
                     <div class="day-cell empty"></div>
 
                     <!-- שבוע 2: ז׳-י״ג שבט -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">י״ג</div>
+                        <div class="day-number">י״ג <span class="gregorian-date">31.1</span></div>
                         <div class="parsha-name">פר׳ בשלח</div>
                     </div>
-                    <div class="day-cell"><div class="day-number">י״ב</div></div>
-                    <div class="day-cell"><div class="day-number">י״א</div></div>
-                    <div class="day-cell"><div class="day-number">י׳</div></div>
-                    <div class="day-cell"><div class="day-number">ט׳</div></div>
-                    <div class="day-cell"><div class="day-number">ח׳</div></div>
-                    <div class="day-cell"><div class="day-number">ז׳</div></div>
+                    <div class="day-cell"><div class="day-number">י״ב <span class="gregorian-date">30.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״א <span class="gregorian-date">29.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">י׳ <span class="gregorian-date">28.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט׳ <span class="gregorian-date">27.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">ח׳ <span class="gregorian-date">26.1</span></div></div>
+                    <div class="day-cell"><div class="day-number">ז׳ <span class="gregorian-date">25.1</span></div></div>
 
                     <!-- שבוע 3: י״ד-כ׳ שבט -->
                     <div class="day-cell shabbat has-event">
-                        <div class="day-number">כ׳</div>
+                        <div class="day-number">כ׳ <span class="gregorian-date">7.2</span></div>
                         <div class="parsha-name">פר׳ יתרו</div>
                         <span class="event-badge meeting">מפגש 7</span>
                         <span class="event-icon">☕</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">י״ט</div></div>
-                    <div class="day-cell"><div class="day-number">י״ח</div></div>
-                    <div class="day-cell"><div class="day-number">י״ז</div></div>
-                    <div class="day-cell"><div class="day-number">ט״ז</div></div>
-                    <div class="day-cell"><div class="day-number">ט״ו</div></div>
-                    <div class="day-cell"><div class="day-number">י״ד</div></div>
+                    <div class="day-cell"><div class="day-number">י״ט <span class="gregorian-date">6.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ח <span class="gregorian-date">5.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ז <span class="gregorian-date">4.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט״ז <span class="gregorian-date">3.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט״ו <span class="gregorian-date">2.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ד <span class="gregorian-date">1.2</span></div></div>
 
                     <!-- שבוע 4: כ״א-כ״ז שבט -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">כ״ז</div>
+                        <div class="day-number">כ״ז <span class="gregorian-date">14.2</span></div>
                         <div class="parsha-name">פר׳ משפטים</div>
                     </div>
-                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ה</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ג</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ב</div></div>
-                    <div class="day-cell"><div class="day-number">כ״א</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ו <span class="gregorian-date">13.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ה <span class="gregorian-date">12.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ד <span class="gregorian-date">11.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ג <span class="gregorian-date">10.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ב <span class="gregorian-date">9.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״א <span class="gregorian-date">8.2</span></div></div>
 
                     <!-- שבוע 5: כ״ח-ל׳ שבט -->
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
-                    <div class="day-cell"><div class="day-number">ל׳</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ט</div></div>
+                    <div class="day-cell"><div class="day-number">ל׳ <span class="gregorian-date">17.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ט <span class="gregorian-date">16.2</span></div></div>
                     <div class="day-cell has-conference">
-                        <div class="day-number">כ״ח</div>
+                        <div class="day-number">כ״ח <span class="gregorian-date">15.2</span></div>
                         <span class="event-badge conference">ועידה י-ם</span>
                         <span class="event-icon">🏛️</span>
                     </div>
                 </div>
             </div>
 
-            <!-- חודש אדר - א׳ אדר = יום רביעי -->
+            <!-- חודש אדר - א׳ אדר = 18.2.2026 יום רביעי -->
             <div class="month-calendar">
                 <div class="month-title">אדר תשפ״ו</div>
                 <div class="calendar-grid">
@@ -456,64 +465,64 @@
                     
                     <!-- שבוע 1: א׳-ד׳ אדר -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">ד׳</div>
+                        <div class="day-number">ד׳ <span class="gregorian-date">21.2</span></div>
                         <div class="parsha-name">פר׳ תרומה</div>
                     </div>
-                    <div class="day-cell"><div class="day-number">ג׳</div></div>
-                    <div class="day-cell"><div class="day-number">ב׳</div></div>
-                    <div class="day-cell"><div class="day-number">א׳</div></div>
+                    <div class="day-cell"><div class="day-number">ג׳ <span class="gregorian-date">20.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ב׳ <span class="gregorian-date">19.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">א׳ <span class="gregorian-date">18.2</span></div></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
 
                     <!-- שבוע 2: ה׳-י״א אדר -->
                     <div class="day-cell shabbat has-event">
-                        <div class="day-number">י״א</div>
+                        <div class="day-number">י״א <span class="gregorian-date">28.2</span></div>
                         <div class="parsha-name">פר׳ תצוה</div>
                         <span class="event-badge meeting">מפגש 8</span>
                         <span class="event-icon">☕</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">י׳</div></div>
-                    <div class="day-cell"><div class="day-number">ט׳</div></div>
-                    <div class="day-cell"><div class="day-number">ח׳</div></div>
-                    <div class="day-cell"><div class="day-number">ז׳</div></div>
-                    <div class="day-cell"><div class="day-number">ו׳</div></div>
-                    <div class="day-cell"><div class="day-number">ה׳</div></div>
+                    <div class="day-cell"><div class="day-number">י׳ <span class="gregorian-date">27.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט׳ <span class="gregorian-date">26.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ח׳ <span class="gregorian-date">25.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ז׳ <span class="gregorian-date">24.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ו׳ <span class="gregorian-date">23.2</span></div></div>
+                    <div class="day-cell"><div class="day-number">ה׳ <span class="gregorian-date">22.2</span></div></div>
 
                     <!-- שבוע 3: י״ב-י״ח אדר -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">י״ח</div>
+                        <div class="day-number">י״ח <span class="gregorian-date">7.3</span></div>
                         <div class="parsha-name">פר׳ כי תשא</div>
                     </div>
-                    <div class="day-cell"><div class="day-number">י״ז</div></div>
-                    <div class="day-cell"><div class="day-number">ט״ז</div></div>
-                    <div class="day-cell"><div class="day-number">ט״ו</div></div>
-                    <div class="day-cell"><div class="day-number">י״ד</div></div>
-                    <div class="day-cell"><div class="day-number">י״ג</div></div>
-                    <div class="day-cell"><div class="day-number">י״ב</div></div>
+                    <div class="day-cell"><div class="day-number">י״ז <span class="gregorian-date">6.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט״ז <span class="gregorian-date">5.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">ט״ו <span class="gregorian-date">4.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ד <span class="gregorian-date">3.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ג <span class="gregorian-date">2.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ב <span class="gregorian-date">1.3</span></div></div>
 
                     <!-- שבוע 4: י״ט-כ״ה אדר -->
                     <div class="day-cell shabbat has-final">
-                        <div class="day-number">כ״ה</div>
+                        <div class="day-number">כ״ה <span class="gregorian-date">14.3</span></div>
                         <div class="parsha-name">פר׳ ויקהל-פקודי</div>
                         <span class="event-badge final">מפגש סיום 🎉</span>
                         <span class="event-icon">🎊</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ג</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ב</div></div>
-                    <div class="day-cell"><div class="day-number">כ״א</div></div>
-                    <div class="day-cell"><div class="day-number">כ׳</div></div>
-                    <div class="day-cell"><div class="day-number">י״ט</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ד <span class="gregorian-date">13.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ג <span class="gregorian-date">12.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ב <span class="gregorian-date">11.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״א <span class="gregorian-date">10.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ׳ <span class="gregorian-date">9.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">י״ט <span class="gregorian-date">8.3</span></div></div>
 
                     <!-- שבוע 5: כ״ו-כ״ט אדר -->
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
-                    <div class="day-cell"><div class="day-number">כ״ט</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ח</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ז</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ט <span class="gregorian-date">18.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ח <span class="gregorian-date">17.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ז <span class="gregorian-date">16.3</span></div></div>
+                    <div class="day-cell"><div class="day-number">כ״ו <span class="gregorian-date">15.3</span></div></div>
                 </div>
             </div>
         </div>
@@ -525,3 +534,4 @@
     </div>
 </body>
 </html>
+
