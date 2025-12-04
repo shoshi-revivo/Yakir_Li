@@ -129,7 +129,7 @@
             gap: 2px;
             padding: 15px;
             background: rgba(212, 165, 116, 0.1);
-            direction: ltr; /* מבטיח שהלוח מוצג נכון - שבת משמאל, ראשון מימין */
+            direction: ltr;
         }
 
         .day-header {
@@ -140,7 +140,7 @@
             font-weight: 700;
             font-size: 0.95em;
             border-radius: 8px;
-            direction: rtl; /* הטקסט בכותרות יישאר מימין לשמאל */
+            direction: rtl;
         }
 
         .day-header.shabbat {
@@ -154,7 +154,7 @@
             border-radius: 10px;
             position: relative;
             transition: all 0.2s ease;
-            direction: rtl; /* הטקסט בתוך התאים יישאר מימין לשמאל */
+            direction: rtl;
         }
 
         .day-cell:hover {
@@ -172,10 +172,12 @@
 
         .day-cell.has-event {
             border: 2px solid var(--caramel);
+            background: linear-gradient(135deg, #FFF9F0 0%, #FFE8D5 100%);
         }
 
         .day-cell.has-conference {
             border: 2px solid var(--coffee-light);
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
         }
 
         .day-cell.has-final {
@@ -229,12 +231,6 @@
             margin-top: 3px;
         }
 
-        .event-details {
-            font-size: 0.65em;
-            color: var(--coffee-medium);
-            margin-top: 2px;
-        }
-
         footer {
             text-align: center;
             margin-top: 40px;
@@ -267,7 +263,7 @@
             <div class="legend">
                 <div class="legend-item">
                     <div class="legend-dot meeting"></div>
-                    <span>מפגש יקיר לי</span>
+                    <span>מפגש במוצ״ש</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-dot conference"></div>
@@ -281,11 +277,11 @@
         </header>
 
         <div class="months-container">
-            <!-- חודש טבת -->
+            <!-- חודש טבת - א׳ טבת = יום ראשון -->
             <div class="month-calendar">
                 <div class="month-title">טבת תשפ״ו</div>
                 <div class="calendar-grid">
-                    <!-- Headers -->
+                    <!-- Headers: שבת משמאל, ראשון מימין -->
                     <div class="day-header shabbat">שבת</div>
                     <div class="day-header">שישי</div>
                     <div class="day-header">חמישי</div>
@@ -294,11 +290,14 @@
                     <div class="day-header">שני</div>
                     <div class="day-header">ראשון</div>
                     
-                    <!-- Week 1 - Tevet starts on Sunday -->
-                    <div class="day-cell shabbat">
-                        <div class="day-number">ו׳</div>
-                        <div class="parsha-name">ויגש</div>
+                    <!-- שבוע 1: א׳-ז׳ טבת -->
+                    <div class="day-cell shabbat has-event">
+                        <div class="day-number">ז׳</div>
+                        <div class="parsha-name">פר׳ ויגש</div>
+                        <span class="event-badge meeting">מפגש 4</span>
+                        <span class="event-icon">☕</span>
                     </div>
+                    <div class="day-cell"><div class="day-number">ו׳</div></div>
                     <div class="day-cell"><div class="day-number">ה׳</div></div>
                     <div class="day-cell"><div class="day-number">ד׳</div></div>
                     <div class="day-cell has-conference">
@@ -308,66 +307,57 @@
                     </div>
                     <div class="day-cell"><div class="day-number">ב׳</div></div>
                     <div class="day-cell"><div class="day-number">א׳</div></div>
-                    <div class="day-cell empty"></div>
 
-                    <!-- Week 2 -->
-                    <div class="day-cell shabbat has-event">
-                        <div class="day-number">י״ג</div>
-                        <div class="parsha-name">ויחי</div>
+                    <!-- שבוע 2: ח׳-י״ד טבת -->
+                    <div class="day-cell shabbat">
+                        <div class="day-number">י״ד</div>
+                        <div class="parsha-name">פר׳ ויחי</div>
                     </div>
+                    <div class="day-cell"><div class="day-number">י״ג</div></div>
                     <div class="day-cell"><div class="day-number">י״ב</div></div>
                     <div class="day-cell"><div class="day-number">י״א</div></div>
                     <div class="day-cell"><div class="day-number">י׳</div></div>
                     <div class="day-cell"><div class="day-number">ט׳</div></div>
                     <div class="day-cell"><div class="day-number">ח׳</div></div>
-                    <div class="day-cell has-event">
-                        <div class="day-number">ז׳</div>
-                        <span class="event-badge meeting">מפגש 4</span>
-                        <span class="event-icon">☕</span>
-                        <div class="parsha-name">ויגש</div>
-                    </div>
 
-                    <!-- Week 3 -->
-                    <div class="day-cell shabbat">
-                        <div class="day-number">כ׳</div>
-                        <div class="parsha-name">שמות</div>
+                    <!-- שבוע 3: ט״ו-כ״א טבת -->
+                    <div class="day-cell shabbat has-event">
+                        <div class="day-number">כ״א</div>
+                        <div class="parsha-name">פר׳ שמות</div>
+                        <span class="event-badge meeting">מפגש 5</span>
+                        <span class="event-icon">☕</span>
                     </div>
+                    <div class="day-cell"><div class="day-number">כ׳</div></div>
                     <div class="day-cell"><div class="day-number">י״ט</div></div>
                     <div class="day-cell"><div class="day-number">י״ח</div></div>
                     <div class="day-cell"><div class="day-number">י״ז</div></div>
                     <div class="day-cell"><div class="day-number">ט״ז</div></div>
                     <div class="day-cell"><div class="day-number">ט״ו</div></div>
-                    <div class="day-cell"><div class="day-number">י״ד</div></div>
 
-                    <!-- Week 4 -->
+                    <!-- שבוע 4: כ״ב-כ״ח טבת -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">כ״ז</div>
-                        <div class="parsha-name">וארא</div>
+                        <div class="day-number">כ״ח</div>
+                        <div class="parsha-name">פר׳ וארא</div>
                     </div>
+                    <div class="day-cell"><div class="day-number">כ״ז</div></div>
                     <div class="day-cell"><div class="day-number">כ״ו</div></div>
                     <div class="day-cell"><div class="day-number">כ״ה</div></div>
                     <div class="day-cell"><div class="day-number">כ״ד</div></div>
                     <div class="day-cell"><div class="day-number">כ״ג</div></div>
                     <div class="day-cell"><div class="day-number">כ״ב</div></div>
-                    <div class="day-cell has-event">
-                        <div class="day-number">כ״א</div>
-                        <span class="event-badge meeting">מפגש 5</span>
-                        <span class="event-icon">☕</span>
-                        <div class="parsha-name">שמות</div>
-                    </div>
 
-                    <!-- Week 5 -->
+                    <!-- שבוע 5: כ״ט טבת -->
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell"><div class="day-number">כ״ט</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ח</div></div>
-                    <div class="day-cell empty"></div>
-                    <div class="day-cell empty"></div>
                 </div>
             </div>
 
-            <!-- חודש שבט -->
+            <!-- חודש שבט - א׳ שבט = יום שני -->
             <div class="month-calendar">
                 <div class="month-title">שבט תשפ״ו</div>
                 <div class="calendar-grid">
@@ -380,11 +370,15 @@
                     <div class="day-header">שני</div>
                     <div class="day-header">ראשון</div>
                     
-                    <!-- Week 1 - Shevat -->
-                    <div class="day-cell shabbat">
-                        <div class="day-number">ד׳</div>
-                        <div class="parsha-name">בא</div>
+                    <!-- שבוע 1: א׳-ו׳ שבט -->
+                    <div class="day-cell shabbat has-event">
+                        <div class="day-number">ו׳</div>
+                        <div class="parsha-name">פר׳ בא</div>
+                        <span class="event-badge meeting">מפגש 6</span>
+                        <span class="event-icon">☕</span>
                     </div>
+                    <div class="day-cell"><div class="day-number">ה׳</div></div>
+                    <div class="day-cell"><div class="day-number">ד׳</div></div>
                     <div class="day-cell"><div class="day-number">ג׳</div></div>
                     <div class="day-cell has-conference">
                         <div class="day-number">ב׳</div>
@@ -393,56 +387,49 @@
                     </div>
                     <div class="day-cell"><div class="day-number">א׳</div></div>
                     <div class="day-cell empty"></div>
-                    <div class="day-cell empty"></div>
-                    <div class="day-cell empty"></div>
 
-                    <!-- Week 2 -->
+                    <!-- שבוע 2: ז׳-י״ג שבט -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">י״א</div>
-                        <div class="parsha-name">בשלח</div>
+                        <div class="day-number">י״ג</div>
+                        <div class="parsha-name">פר׳ בשלח</div>
                     </div>
+                    <div class="day-cell"><div class="day-number">י״ב</div></div>
+                    <div class="day-cell"><div class="day-number">י״א</div></div>
                     <div class="day-cell"><div class="day-number">י׳</div></div>
                     <div class="day-cell"><div class="day-number">ט׳</div></div>
                     <div class="day-cell"><div class="day-number">ח׳</div></div>
                     <div class="day-cell"><div class="day-number">ז׳</div></div>
-                    <div class="day-cell has-event">
-                        <div class="day-number">ו׳</div>
-                        <span class="event-badge meeting">מפגש 6</span>
-                        <span class="event-icon">☕</span>
-                        <div class="parsha-name">בא</div>
-                    </div>
-                    <div class="day-cell"><div class="day-number">ה׳</div></div>
 
-                    <!-- Week 3 -->
-                    <div class="day-cell shabbat">
-                        <div class="day-number">י״ח</div>
-                        <div class="parsha-name">יתרו</div>
+                    <!-- שבוע 3: י״ד-כ׳ שבט -->
+                    <div class="day-cell shabbat has-event">
+                        <div class="day-number">כ׳</div>
+                        <div class="parsha-name">פר׳ יתרו</div>
+                        <span class="event-badge meeting">מפגש 7</span>
+                        <span class="event-icon">☕</span>
                     </div>
+                    <div class="day-cell"><div class="day-number">י״ט</div></div>
+                    <div class="day-cell"><div class="day-number">י״ח</div></div>
                     <div class="day-cell"><div class="day-number">י״ז</div></div>
                     <div class="day-cell"><div class="day-number">ט״ז</div></div>
                     <div class="day-cell"><div class="day-number">ט״ו</div></div>
                     <div class="day-cell"><div class="day-number">י״ד</div></div>
-                    <div class="day-cell"><div class="day-number">י״ג</div></div>
-                    <div class="day-cell"><div class="day-number">י״ב</div></div>
 
-                    <!-- Week 4 -->
+                    <!-- שבוע 4: כ״א-כ״ז שבט -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">כ״ה</div>
-                        <div class="parsha-name">משפטים</div>
+                        <div class="day-number">כ״ז</div>
+                        <div class="parsha-name">פר׳ משפטים</div>
                     </div>
+                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ה</div></div>
                     <div class="day-cell"><div class="day-number">כ״ד</div></div>
                     <div class="day-cell"><div class="day-number">כ״ג</div></div>
                     <div class="day-cell"><div class="day-number">כ״ב</div></div>
                     <div class="day-cell"><div class="day-number">כ״א</div></div>
-                    <div class="day-cell has-event">
-                        <div class="day-number">כ׳</div>
-                        <span class="event-badge meeting">מפגש 7</span>
-                        <span class="event-icon">☕</span>
-                        <div class="parsha-name">יתרו</div>
-                    </div>
-                    <div class="day-cell"><div class="day-number">י״ט</div></div>
 
-                    <!-- Week 5 -->
+                    <!-- שבוע 5: כ״ח-ל׳ שבט -->
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell"><div class="day-number">ל׳</div></div>
                     <div class="day-cell"><div class="day-number">כ״ט</div></div>
@@ -451,13 +438,10 @@
                         <span class="event-badge conference">ועידה י-ם</span>
                         <span class="event-icon">🏛️</span>
                     </div>
-                    <div class="day-cell"><div class="day-number">כ״ז</div></div>
-                    <div class="day-cell"><div class="day-number">כ״ו</div></div>
-                    <div class="day-cell empty"></div>
                 </div>
             </div>
 
-            <!-- חודש אדר -->
+            <!-- חודש אדר - א׳ אדר = יום רביעי -->
             <div class="month-calendar">
                 <div class="month-title">אדר תשפ״ו</div>
                 <div class="calendar-grid">
@@ -470,75 +454,66 @@
                     <div class="day-header">שני</div>
                     <div class="day-header">ראשון</div>
                     
-                    <!-- Week 1 -->
+                    <!-- שבוע 1: א׳-ד׳ אדר -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">ב׳</div>
-                        <div class="parsha-name">תרומה</div>
+                        <div class="day-number">ד׳</div>
+                        <div class="parsha-name">פר׳ תרומה</div>
                     </div>
+                    <div class="day-cell"><div class="day-number">ג׳</div></div>
+                    <div class="day-cell"><div class="day-number">ב׳</div></div>
                     <div class="day-cell"><div class="day-number">א׳</div></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
                     <div class="day-cell empty"></div>
-                    <div class="day-cell empty"></div>
-                    <div class="day-cell empty"></div>
 
-                    <!-- Week 2 -->
-                    <div class="day-cell shabbat">
-                        <div class="day-number">ט׳</div>
-                        <div class="parsha-name">תצוה</div>
+                    <!-- שבוע 2: ה׳-י״א אדר -->
+                    <div class="day-cell shabbat has-event">
+                        <div class="day-number">י״א</div>
+                        <div class="parsha-name">פר׳ תצוה</div>
+                        <span class="event-badge meeting">מפגש 8</span>
+                        <span class="event-icon">☕</span>
                     </div>
+                    <div class="day-cell"><div class="day-number">י׳</div></div>
+                    <div class="day-cell"><div class="day-number">ט׳</div></div>
                     <div class="day-cell"><div class="day-number">ח׳</div></div>
                     <div class="day-cell"><div class="day-number">ז׳</div></div>
                     <div class="day-cell"><div class="day-number">ו׳</div></div>
                     <div class="day-cell"><div class="day-number">ה׳</div></div>
-                    <div class="day-cell"><div class="day-number">ד׳</div></div>
-                    <div class="day-cell"><div class="day-number">ג׳</div></div>
 
-                    <!-- Week 3 -->
+                    <!-- שבוע 3: י״ב-י״ח אדר -->
                     <div class="day-cell shabbat">
-                        <div class="day-number">ט״ז</div>
-                        <div class="parsha-name">כי תשא</div>
+                        <div class="day-number">י״ח</div>
+                        <div class="parsha-name">פר׳ כי תשא</div>
                     </div>
+                    <div class="day-cell"><div class="day-number">י״ז</div></div>
+                    <div class="day-cell"><div class="day-number">ט״ז</div></div>
                     <div class="day-cell"><div class="day-number">ט״ו</div></div>
                     <div class="day-cell"><div class="day-number">י״ד</div></div>
                     <div class="day-cell"><div class="day-number">י״ג</div></div>
                     <div class="day-cell"><div class="day-number">י״ב</div></div>
-                    <div class="day-cell has-event">
-                        <div class="day-number">י״א</div>
-                        <span class="event-badge meeting">מפגש 8</span>
-                        <span class="event-icon">☕</span>
-                        <div class="parsha-name">תצוה</div>
-                    </div>
-                    <div class="day-cell"><div class="day-number">י׳</div></div>
 
-                    <!-- Week 4 -->
-                    <div class="day-cell shabbat">
-                        <div class="day-number">כ״ג</div>
-                        <div class="parsha-name">ויק״פ</div>
+                    <!-- שבוע 4: י״ט-כ״ה אדר -->
+                    <div class="day-cell shabbat has-final">
+                        <div class="day-number">כ״ה</div>
+                        <div class="parsha-name">פר׳ ויקהל-פקודי</div>
+                        <span class="event-badge final">מפגש סיום 🎉</span>
+                        <span class="event-icon">🎊</span>
                     </div>
+                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
+                    <div class="day-cell"><div class="day-number">כ״ג</div></div>
                     <div class="day-cell"><div class="day-number">כ״ב</div></div>
                     <div class="day-cell"><div class="day-number">כ״א</div></div>
                     <div class="day-cell"><div class="day-number">כ׳</div></div>
                     <div class="day-cell"><div class="day-number">י״ט</div></div>
-                    <div class="day-cell"><div class="day-number">י״ח</div></div>
-                    <div class="day-cell"><div class="day-number">י״ז</div></div>
 
-                    <!-- Week 5 -->
-                    <div class="day-cell shabbat">
-                        <div class="day-number">ל׳</div>
-                        <div class="parsha-name">ויקרא</div>
-                    </div>
+                    <!-- שבוע 5: כ״ו-כ״ט אדר -->
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
+                    <div class="day-cell empty"></div>
                     <div class="day-cell"><div class="day-number">כ״ט</div></div>
                     <div class="day-cell"><div class="day-number">כ״ח</div></div>
                     <div class="day-cell"><div class="day-number">כ״ז</div></div>
                     <div class="day-cell"><div class="day-number">כ״ו</div></div>
-                    <div class="day-cell has-final">
-                        <div class="day-number">כ״ה</div>
-                        <span class="event-badge final">סיום! 🎉</span>
-                        <span class="event-icon">🎊</span>
-                        <div class="parsha-name">ויק״פ</div>
-                    </div>
-                    <div class="day-cell"><div class="day-number">כ״ד</div></div>
                 </div>
             </div>
         </div>
